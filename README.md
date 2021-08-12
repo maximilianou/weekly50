@@ -1,4 +1,4 @@
 # weekly50
-#gitops kubernetes
+# gitops kubernetes
 
 

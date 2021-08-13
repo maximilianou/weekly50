@@ -11,130 +11,36 @@ step00 view-hostname:
 	@echo $(servers-exec-cmd)
 	@echo '$(servers-exec-usr-id)'
 
-step49_1000 next_ui_init: 
-	cd app && npx create-next-app --typescript ui
-	cd app/ui && npm i -D tailwindcss@latest postcss@latest autoprefixer@latest
-	cd app/ui && npx tailwindcss init -p
+#step49_1000 next_ui_init: 
+#	cd app && npx create-next-app --typescript ui
+#	cd app/ui && npm i -D tailwindcss@latest postcss@latest autoprefixer@latest
+#	cd app/ui && npx tailwindcss init -p
+#
+#step49_1010 next_ui_dev: 
+#	cd app/ui && npm run dev
+#		
+#step49_1999 next_ui:
+#	cd app && rm -rf ui
 
-step49_1010 next_ui_dev: 
-	cd app/ui && npm run dev
-		
-step49_1999 next_ui:
-	cd app && rm -rf ui
-
-
-step49_2010 app1_lb_create:
-	cd kubernetes/step01_frontbacksvc && kubectl apply -f .
-
-step49_2020 app1_ns_view:
-	watch kubectl get all -n=app1-ns
-
-step49_2999 app1_ns_delete:
-	kubectl delete namespace app1-ns
-##step47_1400 dmarket_create:
-##	cd dapp && npx create-next-app dmarket
-##	cd dapp/dmarket && npm i ethers hardhat @nomiclabs/hardhat-waffle
-##	cd dapp/dmarket && npm i ethereum-waffle chai @nomiclabs/hardhat-ethers
-##	cd dapp/dmarket && npm i web3modal @openzeppelin/contracts ipfs-http-client axios
-##	cd dapp/dmarket && npm i -D tailwindcss@latest postcss@latest autoprefixer@latest
-##	cd dapp/dmarket && npx tailwindcss init -p
-##
-##step47_1401 dmarket_hardhat_init:
-##	cd dapp/dmarket && npx hardhat
-##
-##step47_1402 dmarket_hardhat_secret:
-##	touch dapp/dmarket/.secret
-##
-##step47_1403 dmarket_hardhat_test:
-##	cd dapp/dmarket && npx hardhat test
-##
-##step47_1404 dmarket_hardhat_node:
-##	cd dapp/dmarket && npx hardhat node
-##
-##step47_1405 dmarket_hardhat_deploy_local:
-##	cd dapp/dmarket && npx hardhat run scripts/deploy.js --network localhost
-##
-##step47_1406 dmarket_dev_test:
-##	cd dapp/dmarket && npm run dev
-
-##step47_1499 dmarket_clean:
-##	cd dapp && rm -rf dmarket
-##
-##step47_1520 nftmarket_network_start:
-##	cd dapp/nft-marketplace && npx hardhat node
-##
-##step47_1521 nftmarket_token_deploy_localhost:
-##	cd dapp/nft-marketplace && npx hardhat run scripts/deploy.js --network localhost
-##
-##step47_1523 nftmarket_run_dev:
-##	cd dapp/nft-marketplace && npm run dev
-##
-##step47_1524 nftmarket_on_your_browser:
-##	echo '1. Open your Browser in http://localhost:3000'
-##	echo '2. Install Metamask on your browser'
-##	echo '3. Import in Metamask 2 wallet, take the private key from the initial network running'
-##	echo '4. Add a new NFT over the Site, Using the Metamask Wallet Account A'
-##	echo '5. Buy the NFT, using the Metamask wallet account B'
-##	echo '6. Verify how it goes!'
-
-##step46_1301 denochat_install:
-##	curl -fsSL https://deno.land/x/install/install.sh | sh	
-##	deno --version
-##
-##step46_1302 denochat_create:
-##	mkdir -p denochat/api 
-##
-##step46_1303 denochat_ui:
-##	deno install -A -f --no-check -n fresh https://raw.githubusercontent.com/lucacasonato/fresh/main/cli.ts
-##	cd denochat && fresh init ui
-##
-##step46_1304 denochat_deployctl_install:
-##	deno install --allow-read --allow-write --allow-env --allow-net --allow-run --no-check -r -f https://deno.land/x/deploy/deployctl.ts
-##
-##step46_1305 denochat_deployctl_run:
-##	cd denochat/ui && deployctl run --no-check --watch main.ts
-##
-##step46_1300 deno_clean:
-##	rm -rf denochat
 
 #####################################################
 ## Typescript
-step49_5000 ts_init:
-	mkdir -p programming/ts01 && cd programming/ts01 && npm -y init 
-	cd programming/ts01 && npm i -D typescript ts-node
-	cd programming/ts01 && ./node_modules/.bin/tsc --init
-	cd programming/ts01 && npm i -D jest ts-jest @types/jest
-	cd programming/ts01 && npm i -D babel-jest @babel/core @babel/preset-env @babel/preset-typescript 
-	cd programming/ts01 && npx ts-jest config:init
-	
-#####################################################
-## Functional Programming Typescript / Javascript
-#step46_1000 node_typescript_init:
-#	mkdir -p programming/fp01 && cd programming/fp01 && npm -y init 
-#	cd programming/fp01 && npm i -D typescript ts-node
-#	cd programming/fp01 && ./node_modules/.bin/tsc --init
-#
-#step46_1001 node_typescript_dev:
-#	cd programming/fp01 && npm run dev
-#
-#step46_1002 node_fp_ts:
-#	cd programming/fp01 && npm i fp-ts
-#
-#step46_1003 node_fp03_ts:
-#	mkdir -p programming/fp03 && cd programming/fp03 && npm init -y && npm i create-fp-ts-lib  
-#	cd programming/fp03 && ./node_modules/.bin/create-fp-ts-lib --packageManager npm -q  -n api_lib
-#	cd programming/fp03/api_lib && npm i
-
-
-
-step46_1200 ts_clean:
-	rm -rf programming
+#step49_5000 ts_init:
+#	mkdir -p programming/ts01 && cd programming/ts01 && npm -y init 
+#	cd programming/ts01 && npm i -D typescript ts-node
+#	cd programming/ts01 && ./node_modules/.bin/tsc --init
+#	cd programming/ts01 && npm i -D jest ts-jest @types/jest
+#	cd programming/ts01 && npm i -D babel-jest @babel/core @babel/preset-env @babel/preset-typescript 
+#	cd programming/ts01 && npx ts-jest config:init
+#	
+#step46_1200 ts_clean:
+#	rm -rf programming
 #####################################################
 
 #####################################################
 ## dapp defi
-step46_50 dapp_ui_init:
-	cd dapp/defi_tutorial && npm i
+#step46_50 dapp_ui_init:
+#	cd dapp/defi_tutorial && npm i
 #step10 web3-client:
 #	npm i -g truffle
 ##step46_52 web3_ganache_install:
@@ -185,32 +91,30 @@ step46_50 dapp_ui_init:
 
 #####################################################3
 ## app - neo4j - graphql - react - typescript
-step4500 docker-system-prune:
-	docker system prune -af	
-
-step4501 graphql-ui-init:
-	cd app && npm uninstall -g create-react-app && npx create-react-app ui --template typescript
-
-step4502 docker-compose-up:
-	docker-compose -f docker/docker-compose.yml up --remove-orphans
-
-step4503 docker-registry-start:
-	docker run -d -p 5000:5000 --name registry -v /mnt/registry:/var/lib/registry registry:2
-	docker pull alpine:3
-	docker tag alpine:3 localhost:5000/dev_alpine
-	docker push localhost:5000/dev_alpine
-	# docker image remove alpine:3
-	# docker image remove localhost:5000/dev_alpine
-	# docker pull localhost:5000/dev_alpine
-
-step4504 docker-registry-stop:
-	docker container stop registry && docker container rm -v registry
-
-step4505 graphql-api-init:
-	cd app && npx create-express-typescript-application api -t plain
-	cd app && cd api && npm i @neo4j/graphql graphql apollo-server neo4j-driver
-
-
+#step4500 docker-system-prune:
+#	docker system prune -af	
+#
+#step4501 graphql-ui-init:
+#	cd app && npm uninstall -g create-react-app && npx create-react-app ui --template typescript
+#
+#step4502 docker-compose-up:
+#	docker-compose -f docker/docker-compose.yml up --remove-orphans
+#
+#step4503 docker-registry-start:
+#	docker run -d -p 5000:5000 --name registry -v /mnt/registry:/var/lib/registry registry:2
+#	docker pull alpine:3
+#	docker tag alpine:3 localhost:5000/dev_alpine
+#	docker push localhost:5000/dev_alpine
+#	# docker image remove alpine:3
+#	# docker image remove localhost:5000/dev_alpine
+#	# docker pull localhost:5000/dev_alpine
+#
+#step4504 docker-registry-stop:
+#	docker container stop registry && docker container rm -v registry
+#
+#step4505 graphql-api-init:
+#	cd app && npx create-express-typescript-application api -t plain
+#	cd app && cd api && npm i @neo4j/graphql graphql apollo-server neo4j-driver
 
 #step4403 docker-psql-ls:
 #	docker exec docker_db_1 psql -Upostgres -d postgres -c '\l'	
@@ -257,6 +161,21 @@ step4505 graphql-api-init:
 #####################################################
 ## Server
 #####################################################
+
+
+###########
+## GitOps
+###########
+
+step50-01 gitops-01-init:
+	apt -y update; apt -y upgrade && adduser dev-user && usermod -g ssh dev-user && usermod -g staff dev-user && chown root:staff /usr/local/bin && chmod 775 /usr/local/bin && hostname dev.simpledoers.com
+	apt -y install apt-transport-https software-properties-common ca-certificates curl gnupg lsb-release; echo  'deb [arch=amd64] https://download.docker.com/linux/debian  buster stable' | tee /etc/apt/sources.list.d/docker.list > /dev/null ;  curl -fsSL https://download.docker.com/linux/debian/gpg | apt-key add - ; add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/debian buster stable" ; apt -y update; apt -y remove docker docker-engine docker.io containerd runc; apt -y install docker-ce docker-ce-cli containerd.io; usermod -aG docker dev-user
+	curl -s https://raw.githubusercontent.com/rancher/k3d/main/install.sh | bash && chmod +x k3d && mv k3d /usr/local/bin/
+	k3d cluster create --config /home/dev-user/k3d-dev-cluster.yaml
+	curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl" && chmod +x kubectl && mv kubectl /usr/local/bin/
+	curl -s "https://raw.githubusercontent.com/kubernetes-sigs/kustomize/master/hack/install_kustomize.sh"| bash && && chmod +x kustomize && mv kustomize /usr/local/bin/
+
+###########
 
 #ssh-manual-root-update: ## debian - dev-user:staff /usr/loca/bin
 #	apt -y update; apt -y upgrade;

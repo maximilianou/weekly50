@@ -118,7 +118,26 @@ kubectl set on hold.
 
    dev-user@master:~$ docker run --rm gcr.io/google_containers/hyperkube:v1.18.6  kube-apiserver --help
 
+   docker run --rm gcr.io/google_containers/hyperkube:v1.18.6 kube-scheduler --help
+
+   docker run --rm gcr.io/google_containers/hyperkube:v1.18.6 kube-controller-manager --help
    
+```
+
+```
+  root@master2:~# kubeadm init --ignore-preflight-errors=all
+
+  root@worker1:~# kubeadm join 10.249.240.82:6443 --token fgilf3.9szn56gv8v6spm3w \
+	--discovery-token-ca-cert-hash sha256:45eca92addd6789cdef90b0d965b93d7252a8270e0602de01124ef6813cdf56e
+
+  root@worker2:~# kubeadm join 10.249.240.82:6443 --token fgilf3.9szn56gv8v6spm3w \
+	--discovery-token-ca-cert-hash sha256:45eca92addd6789cdef90b0d965b93d7252a8270e0602de01124ef6813cdf56e
+
+  root@master2:~# cat /etc/kubernetes/admin.conf \
+                      > ~/.kube/config
+```
+
 
 ```
 
+```
